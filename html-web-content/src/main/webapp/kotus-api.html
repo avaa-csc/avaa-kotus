@@ -1,0 +1,132 @@
+<h1>Kielikartaston WFS-rajapinnan käyttö</h1>
+
+<div>Kielikartaston kohteita voi tarkastella ja ladata WFS-rajapinnan avulla. Rajapinta tarjoaa mahdollisuuden tehdä aineistoon liittyviä HTTP GET- ja POST-kutsuja esimerkiksi selaimella tai paikkatieto-ohjelmistolla (ArcMap, MapInfo, QGIS jne.). OGC:n rajapintojen yleiset kuvaukset ja käyttöohjeet löytyvät CSC:n geotieteiden <a href="https://research.csc.fi/gis-guidelines">ohjesivuilta </a>(ks Rajapintapalvelut).</div>
+
+<div>&nbsp;</div>
+
+<h3>Kielikartaston WFS-rajapinnan tiedot</h3>
+
+<div>
+<table border="1" cellpadding="1" cellspacing="1" height="446" width="680">
+	<tbody>
+		<tr>
+			<td><strong>WFS URL</strong></td>
+			<td>http://avaa.tdata.fi/geoserver/kotus/wfs?</td>
+		</tr>
+		<tr>
+			<td><strong>Koordinaattijärjestelmä</strong></td>
+			<td>Oletus: ETRS-TM35FIN (EPSG: 3067), tarvittaessa kaikki muut EPSG-koodin avulla</td>
+		</tr>
+		<tr>
+			<td>
+			<p><strong>Karttatasot</strong></p>
+			</td>
+			<td>
+			<ul>
+				<li>Ilmiöt:
+				<ul>
+					<li>kotus:paikkatieto_view</li>
+				</ul>
+				</li>
+				<li>Taustakartan rajat:
+				<ul>
+					<li>kotus:pitajat</li>
+					<li>kotus:rajat-sms-alueosat</li>
+					<li>kotus:rajat-lansi-ita</li>
+					<li>kotus:rajat-sms-alueet</li>
+				</ul>
+				</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Tiedostomuodot</strong></td>
+			<td>
+			<ul>
+				<li>outputformat=
+				<ul>
+					<li>SHAPE-ZIP</li>
+					<li>csv</li>
+					<li>GML2</li>
+					<li><span class="pre" style="">GML3 </span></li>
+					<li><span class="pre" style="">application/json (geojson) </span></li>
+					<li><span class="pre" style="">text/javascript</span></li>
+				</ul>
+				</li>
+			</ul>
+			<a href="http://docs.geoserver.org/latest/en/user/services/wfs/outputformats.html" target="_blank">Lisätietoja</a></td>
+		</tr>
+		<tr>
+			<td><strong>Ilmiön tiedot</strong></td>
+			<td>fid, ilmio_id, aineisto_id, aineisto_nimi, alaryhma_id, alaryhma_nimi, ylaryhma_id, ilmio, tyyppi, kuvaus, paikka_nimi, paikantyyppi, mml_paikkaid</td>
+		</tr>
+		<tr>
+			<td><strong>aineisto_id</strong></td>
+			<td>
+			<ul>
+				<li>1 = Itämerensuomalainen kielikartasto IMSK</li>
+				<li>2 = Kettusen murrekartasto</li>
+				<li>3 = Suomen murteiden sanakirjan levikkikartat</li>
+				<li>4 = Svenska Ortnamn i Finland</li>
+				<li>5 = Paikannimikartasto</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><strong>Rajoitukset</strong></td>
+			<td>GeoServerin rajapinnasta voi hakea max 100 000 kohdetta kerralla, joten koko aineiston lataukset yhdellä haulla eivät ole mahdollisia. Koko aineiston lataamiseksi käytä "Aineistot" välilehdellä olevia latauspaketteja.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+</div>
+
+<div>
+<h2>Esimerkkejä rajapinnan käytöstä</h2>
+
+<h3>GetCapabilities kertoo palvelun ominaisuudet</h3>
+
+<pre>
+http://avaa.tdata.fi/geoserver/kotus/wfs?request=GetCapabilities</pre>
+
+<div>
+<div>GetCapabilities palauttaa XML-tiedoston, joka sisältää muun muassa aineistolle saatavissa olevat tiedostomuodot, aineiston käyttämän koordinaattijärjestelmän, aineiston karttatasot ja kullekin karttatasolle mahdolliset WFS-kutsut.</div>
+
+<div>&nbsp;</div>
+
+<h3>Ilmiön haku</h3>
+
+<p>Esimerkissä:</p>
+
+<ul>
+	<li>haetaan kaikki ilmiön (ID=1806) paikat (filter=...)</li>
+	<li>tiedosto ladataan Shape-formaatissa (outputformat=SHAPE-ZIP)</li>
+	<li>tiedoston nimi on "kotus.zip"</li>
+</ul>
+
+<pre>
+http://avaa.tdata.fi/geoserver/kotus/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=kotus:paikkatieto_view&amp;outputformat=SHAPE-ZIP&amp;Filter=&lt;Filter&gt;&lt;PropertyIsEqualTo&gt;&lt;PropertyName&gt;ilmio_id&lt;/PropertyName&gt;&lt;Literal&gt;1806&lt;/Literal&gt;&lt;/PropertyIsEqualTo&gt;&lt;/Filter&gt;&amp;format_options=filename:kotus.zip</pre>
+
+<div>&nbsp;</div>
+
+<h3>Ryhmän haku</h3>
+
+<p>Esimerkissä:</p>
+
+<ul>
+	<li>haetaan kaikki ryhmän (ID=75063) paikat (filter=...). Hierarkisen rakennen takia ryhmän ID&nbsp;haetaan sekä yläryhmän että alaryhmän kentästä.</li>
+	<li>tiedosto ladataan GML3-formaatissa (outputformat=GML3)</li>
+</ul>
+
+<pre>
+http://avaa.tdata.fi/geoserver/kotus/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=kotus:paikkatieto_view&amp;Filter=&lt;Filter&gt;&lt;Or&gt;&lt;PropertyIsEqualTo&gt;&lt;PropertyName&gt;alaryhma_id&lt;/PropertyName&gt;&lt;Literal&gt;75063&lt;/Literal&gt;&lt;/PropertyIsEqualTo&gt;&lt;PropertyIsEqualTo&gt;&lt;PropertyName&gt;ylaryhma_id&lt;/PropertyName&gt;&lt;Literal&gt;75063&lt;/Literal&gt;&lt;/PropertyIsEqualTo&gt;&lt;/Or&gt;&lt;/Filter&gt;&amp;outputformat=GML3</pre>
+
+<p style="margin-left: 40px;">&nbsp;</p>
+</div>
+</div>
+&nbsp;
+
+<div style="margin-left: 40px;">&nbsp;</div>
+
+<div>&nbsp;</div>

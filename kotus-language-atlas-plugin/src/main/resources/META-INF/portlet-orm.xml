@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.AineistoModelImpl">
+		<attributes>
+			<id name="aineisto_id" />
+			<basic name="nimi" />
+			<basic name="tunnus" />
+			<basic name="kuvaus" />
+			<basic name="paikkatietosysteemi" />
+			<basic name="infolinkki" />
+			<basic name="kayttolupa" />
+			<basic name="tuotu_kantaan">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muutettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muuttaja" />
+			<basic name="poistettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.IlmioModelImpl">
+		<attributes>
+			<id name="ilmio_id" />
+			<basic name="aineisto_id" />
+			<basic name="ryhma_id" />
+			<basic name="lajikoodi_id" />
+			<basic name="ilmio" />
+			<basic name="tyyppi" />
+			<basic name="kieli_ISO639_3" />
+			<basic name="murre" />
+			<basic name="havaintoaika" />
+			<basic name="kuvaus" />
+			<basic name="lisatieto" />
+			<basic name="tuotu_kantaan">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muutettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muuttaja" />
+			<basic name="poistettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="tunnus" />
+			<basic name="ryhma_tunnus" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.LajikoodiModelImpl">
+		<attributes>
+			<id name="lajikoodi_id" />
+			<basic name="lajikoodi" />
+			<basic name="laji" />
+			<basic name="aineistot" />
+			<basic name="viite" />
+			<basic name="tuotu_kantaan">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muutettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muuttaja" />
+			<basic name="poistettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.LevikkiModelImpl">
+		<attributes>
+			<id name="levikki_id" />
+			<basic name="ilmio_id" />
+			<basic name="paikka_id" />
+			<basic name="paikka_tunniste" />
+			<basic name="ilmio_tunnus" />
+			<basic name="uusi" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.PaikkaModelImpl">
+		<attributes>
+			<id name="paikka_id" />
+			<basic name="aineistot" />
+			<basic name="tunniste" />
+			<basic name="nimi_fin" />
+			<basic name="nimi_kieli" />
+			<basic name="tyyppi" />
+			<basic name="alue" />
+			<basic name="maa_ISO3166_1" />
+			<basic name="ajankohta" />
+			<basic name="selite" />
+			<basic name="kielet" />
+			<basic name="murre" />
+			<basic name="sapo_linkki" />
+			<basic name="mml_paikkaID" />
+			<basic name="tuotu_kantaan">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muutettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muuttaja" />
+			<basic name="poistettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.RyhmaModelImpl">
+		<attributes>
+			<id name="ryhma_id" />
+			<basic name="aineisto_id" />
+			<basic name="nimi" />
+			<basic name="tyyppi" />
+			<basic name="ylaryhma" />
+			<basic name="selite" />
+			<basic name="kartta_kuva_linkki" />
+			<basic name="tuotu_kantaan">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muutettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="muuttaja" />
+			<basic name="poistettu">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="tmp" />
+			<basic name="tunnus" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.AineistoImpl" name="Aineisto">
+		<table name="aineisto" />
+		<attributes />
+	</entity>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.IlmioImpl" name="Ilmio">
+		<table name="ilmio" />
+		<attributes />
+	</entity>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.LajikoodiImpl" name="Lajikoodi">
+		<table name="lajikoodi" />
+		<attributes />
+	</entity>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.LevikkiImpl" name="Levikki">
+		<table name="levikki" />
+		<attributes />
+	</entity>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.PaikkaImpl" name="Paikka">
+		<table name="paikka" />
+		<attributes />
+	</entity>
+	<entity class="fi.csc.avaa.kotus.kielikartastot.db.model.impl.RyhmaImpl" name="Ryhma">
+		<table name="ryhma" />
+		<attributes />
+	</entity>
+</entity-mappings>

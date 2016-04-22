@@ -1,0 +1,90 @@
+<custom-sql>
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioFinder.findByAineistoIlmioTyyppiKuvausPaikka">
+SELECT ilmio.*
+FROM ilmio
+WHERE 
+	ilmio.aineisto_id IN (?) AND 
+	ilmio.ilmio_id IN (
+		SELECT ilmio.ilmio_id 
+		FROM ilmio, levikki, paikka 
+		WHERE 
+			UPPER(ilmio.ilmio) LIKE UPPER(?) AND 
+			UPPER(ilmio.tyyppi) LIKE UPPER(?) AND 
+			UPPER(ilmio.kuvaus) LIKE UPPER(?) AND 
+			UPPER(paikka.nimi_fin) LIKE (?) AND	
+			ilmio.ilmio_id = levikki.ilmio_id AND 
+			paikka.paikka_id = levikki.paikka_id)
+ </sql>
+ 
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioFinder.findIlmioPaikkaByRyhmaId">
+SELECT 
+	ilmio.ilmio_id, 
+	ilmio.ilmio, 
+	ilmio.ryhma_id, 
+	ilmio.aineisto_id, 
+	ilmio.tyyppi, 
+	ilmio.kuvaus, 
+	paikka.paikka_id, 
+	paikka.nimi_fin, 
+	paikka.tyyppi, 
+	paikka.alue, 
+	paikka.sapo_linkki, 
+	X(paikka.pistekoordinaatit) AS x, 
+	Y(paikka.pistekoordinaatit) AS y 
+FROM ilmio, levikki, paikka
+WHERE 
+	ilmio.ryhma_id IN (?) AND 
+	ilmio.ilmio_id=levikki.ilmio_id AND 
+	levikki.paikka_id=paikka.paikka_id
+</sql>
+
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.PaikkaFinder.findByIlmioId">
+SELECT 
+	paikka.paikka_id, 
+	paikka.nimi_fin, 
+	paikka.tyyppi, 
+	paikka.alue, 
+	paikka.sapo_linkki, 
+	X(paikka.pistekoordinaatit) AS x, 
+	Y(paikka.pistekoordinaatit) AS y 
+FROM paikka 
+JOIN levikki ON paikka.paikka_id = levikki.paikka_id AND levikki.ilmio_id = ?
+</sql>
+
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaFinder.findAllByRyhmaId">
+SELECT r.nimi AS ryhma_nimi, 
+	r.ryhma_id AS ryhma_id, 
+	r.tyyppi AS ryhma_tyyppi, 
+	yr.nimi AS ylaryhma_nimi, 
+	yr.ryhma_id AS ylaryhma_id, 
+	yr.tyyppi AS ylaryhma_tyyppi, 
+	yryr.nimi AS ylaylaryhma_nimi, 
+	yryr.ryhma_id AS ylaylaryhma_id, 
+	yryr.tyyppi AS ylaylaryhma_tyyppi 
+FROM ryhma AS r 
+LEFT JOIN ryhma AS yr ON r.ylaryhma=yr.ryhma_id  
+LEFT JOIN ryhma AS yryr ON yr.ylaryhma=yryr.ryhma_id 
+WHERE r.ryhma_id = ?
+</sql>
+
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaFinder.findByYlaryhma">
+SELECT 
+	ryhma.ryhma_id, 
+	ryhma.aineisto_id, 
+	ryhma.nimi, 
+	ryhma.tyyppi, 
+	ryhma.ylaryhma 
+FROM ryhma 
+WHERE ryhma.ylaryhma IN (?)
+</sql>
+
+<sql id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioFinder.findByRyhmaId">
+SELECT 
+	ilmio.ilmio_id, 
+	ilmio.aineisto_id, 
+	ilmio.ryhma_id, 
+	ilmio.ilmio 
+FROM ilmio 
+WHERE ilmio.ryhma_id IN (?)
+</sql>
+</custom-sql>

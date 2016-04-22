@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.AineistoLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.AineistoLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.AineistoService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.AineistoServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.AineistoPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.AineistoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.IlmioLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.IlmioLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.IlmioService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.IlmioServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioFinder" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.IlmioFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.LajikoodiLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.LajikoodiLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.LajikoodiService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.LajikoodiServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.LajikoodiPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.LajikoodiPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.LevikkiLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.LevikkiLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.LevikkiService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.LevikkiServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.LevikkiPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.LevikkiPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.PaikkaLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.PaikkaLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.PaikkaService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.PaikkaServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.PaikkaPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.PaikkaPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.PaikkaFinder" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.PaikkaFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.RyhmaLocalService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.RyhmaLocalServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.RyhmaService" class="fi.csc.avaa.kotus.kielikartastot.db.service.impl.RyhmaServiceImpl" />
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaPersistence" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+	<bean id="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaFinder" class="fi.csc.avaa.kotus.kielikartastot.db.service.persistence.RyhmaFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="kotus_kielikartastot" />
+		<property name="sessionFactory" ref="kotus_kielikartastotSessionFactory" />
+	</bean>
+</beans>

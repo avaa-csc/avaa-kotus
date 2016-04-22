@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Aineisto">
+		<field name="aineisto_id" type="int" />
+		<field name="nimi" type="String" />
+		<field name="tunnus" type="String" />
+		<field name="kuvaus" type="String" />
+		<field name="paikkatietosysteemi" type="String" />
+		<field name="infolinkki" type="String" />
+		<field name="kayttolupa" type="String" />
+		<field name="tuotu_kantaan" type="Date" />
+		<field name="muutettu" type="Date" />
+		<field name="muuttaja" type="String" />
+		<field name="poistettu" type="Date" />
+	</model>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Ilmio">
+		<field name="ilmio_id" type="int" />
+		<field name="aineisto_id" type="int" />
+		<field name="ryhma_id" type="int" />
+		<field name="lajikoodi_id" type="int" />
+		<field name="ilmio" type="String" />
+		<field name="tyyppi" type="String" />
+		<field name="kieli_ISO639_3" type="String" />
+		<field name="murre" type="String" />
+		<field name="havaintoaika" type="String" />
+		<field name="kuvaus" type="String" />
+		<field name="lisatieto" type="String" />
+		<field name="tuotu_kantaan" type="Date" />
+		<field name="muutettu" type="Date" />
+		<field name="muuttaja" type="String" />
+		<field name="poistettu" type="Date" />
+		<field name="tunnus" type="String" />
+		<field name="ryhma_tunnus" type="String" />
+	</model>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Lajikoodi">
+		<field name="lajikoodi_id" type="int" />
+		<field name="lajikoodi" type="int" />
+		<field name="laji" type="String" />
+		<field name="aineistot" type="String" />
+		<field name="viite" type="String" />
+		<field name="tuotu_kantaan" type="Date" />
+		<field name="muutettu" type="Date" />
+		<field name="muuttaja" type="String" />
+		<field name="poistettu" type="Date" />
+	</model>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Levikki">
+		<field name="levikki_id" type="int" />
+		<field name="ilmio_id" type="int" />
+		<field name="paikka_id" type="int" />
+		<field name="paikka_tunniste" type="String" />
+		<field name="ilmio_tunnus" type="String" />
+		<field name="uusi" type="int" />
+	</model>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Paikka">
+		<field name="paikka_id" type="int" />
+		<field name="aineistot" type="String" />
+		<field name="tunniste" type="String" />
+		<field name="nimi_fin" type="String" />
+		<field name="nimi_kieli" type="String" />
+		<field name="tyyppi" type="String" />
+		<field name="alue" type="String" />
+		<field name="maa_ISO3166_1" type="String" />
+		<field name="ajankohta" type="String" />
+		<field name="selite" type="String" />
+		<field name="kielet" type="String" />
+		<field name="murre" type="String" />
+		<field name="sapo_linkki" type="String" />
+		<field name="mml_paikkaID" type="int" />
+		<field name="tuotu_kantaan" type="Date" />
+		<field name="muutettu" type="Date" />
+		<field name="muuttaja" type="String" />
+		<field name="poistettu" type="Date" />
+	</model>
+	<model name="fi.csc.avaa.kotus.kielikartastot.db.model.Ryhma">
+		<field name="ryhma_id" type="int" />
+		<field name="aineisto_id" type="int" />
+		<field name="nimi" type="String" />
+		<field name="tyyppi" type="String" />
+		<field name="ylaryhma" type="int" />
+		<field name="selite" type="String" />
+		<field name="kartta_kuva_linkki" type="String" />
+		<field name="tuotu_kantaan" type="Date" />
+		<field name="muutettu" type="Date" />
+		<field name="muuttaja" type="String" />
+		<field name="poistettu" type="Date" />
+		<field name="tmp" type="String" />
+		<field name="tunnus" type="String" />
+	</model>
+</model-hints>

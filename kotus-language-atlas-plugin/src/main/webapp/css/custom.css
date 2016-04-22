@@ -1,0 +1,153 @@
+.info-layout-container {
+	margin-top: 20px !important;
+}
+
+.key-value-pair.key.inline, .v-caption-inline {
+	display: inline !important;
+	margin-left: 10px !important;
+}
+
+.v-caption-inline .v-icon {
+	vertical-align: super !important;	
+}
+
+.group-list-container {
+	margin-top:15px !important;
+}
+
+.group-list-header {
+	margin-bottom: 10px !important;
+}
+
+.location-info-container {
+	margin-top: 20px !important;
+}
+
+.info-location-header {
+	margin-bottom: 10px !important;
+}
+
+.medium-font-size, .medium-font-size .v-button-caption {
+	font-size: 16px !important;
+}
+
+.small-font-size {
+	font-size: 13px !important;
+}
+
+.v-tabsheet-tabitem .v-captiontext {
+    height: 16px !important;
+    line-height: 16px !important;
+    font-size: 14px !important;
+}
+
+.v-tabsheet-tabitemcell {
+    width: 5% !important;
+}
+
+.v-tabsheet-tabitem .v-caption {
+    width: auto !important;
+}
+
+.v-tabsheet-tabitem-selected .v-caption {
+	background-color: #AAAAAA !important;
+	border-radius: 10px !important;
+	border-style: solid !important;
+	border-width: 2px !important;
+}
+
+.v-tabsheet-tabitem-selected:after {
+	border-top-color: #000000 !important;
+	border-right-color: transparent !important;
+	border-bottom-color: transparent !important;
+	border-left-color: transparent !important;
+	margin-bottom: -4px !important;
+}
+
+.v-tabsheet-tabitem-selected .v-caption .v-captiontext {
+	color: #000000 !important;
+	text-shadow: none !important;
+}
+
+.murre-search-form-container .kotus-search-button {
+	margin-left: 248px !important;
+}
+
+.murre-search-form-container .v-caption, .murre-search-form-container .kotus-search-button .v-button-caption, .v-table-table, .v-table-table .v-widget, .collapse-button-container .v-button-caption {
+	font-size: 15px !important;
+}
+
+.collapse-button-container {
+	outline: 0 !important;
+}
+
+.v-table-resizer {
+	width: 2px !important;
+}
+
+.key-value-label-link a span {
+	vertical-align: top !important;
+}
+
+.info-link-container {
+	margin-top: 20px !important;
+}
+
+.link-to-download span {
+	text-decoration: none !important;
+	color: #2aaae6 !important;
+	font-weight: normal !important;
+}
+
+.link-to-map .v-button-caption {
+	color: #2aaae6 !important;
+	text-decoration: none !important;
+}
+
+-link-to-map {}
+
+.extra-margin-right {
+	margin-right: 5px !important;
+}
+
+.v-tabsheet tbody, .v-tabsheet tbody td, .v-tabsheet tbody td div, .kotus-search-button, .kotus-search-button span {
+	-webkit-box-sizing: content-box !important;
+	-moz-box-sizing: content-box !important;
+	box-sizing: content-box !important;	
+}
+
+.v-tree-node-caption div {
+	white-space: normal !important;
+	font-size: 13px !important;
+}
+
+.murre-search-form-container .aineisto-dropdown-div .v-select-select {
+	width: 100% !important;
+	font-size: 14px !important;
+}
+
+.murre-search-form-container input, .murre-search-form-container select {
+	color: #000000 !important;
+	border: 1px solid #AAAAAA !important;
+}
+
+.murre-result-table-container .filters-panel input {
+	color: #000000 !important;
+	border-right: 1px solid #999 !important;
+}
+
+.murre-result-table-container h3, .murre-result-table-container h4 {
+	display: inline !important;
+}
+
+.v-caption-murre-tree {
+	font-size: 16px !important;
+}
+
+.ol-attribution ul {
+	max-width: none !important;
+}
+
+.download-link-container {
+	margin-top: 10px;
+}

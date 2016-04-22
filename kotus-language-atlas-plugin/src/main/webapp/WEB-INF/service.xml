@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_0_0.dtd">
+<service-builder package-path="fi.csc.avaa.kotus.kielikartastot.db">
+    <author>CSC</author>
+    <namespace>kotus_kielikartastot</namespace>
+    <entity name="Aineisto" table="aineisto" local-service="true" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true">
+    	<column name="aineisto_id" type="int" primary="true" id-type="increment"></column>
+    	<column name="nimi" type="String"></column>
+    	<column name="tunnus" type="String"></column>
+        <column name="kuvaus" type="String"></column>
+        <column name="paikkatietosysteemi" type="String"></column>
+        <column name="infolinkki" type="String"></column>
+        <column name="kayttolupa" type="String"></column>
+        <column name="tuotu_kantaan" type="Date"></column>
+        <column name="muutettu" type="Date"></column>
+        <column name="muuttaja" type="String"></column>
+        <column name="poistettu" type="Date"></column>
+    </entity>
+    <entity name="Ilmio" local-service="true" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true" table="ilmio">
+        <column name="ilmio_id" type="int" primary="true" id-type="increment"></column>
+        <column name="aineisto_id" type="int"></column>
+        <column name="ryhma_id" type="int"></column>
+        <column name="lajikoodi_id" type="int"></column>
+        <column name="ilmio" type="String"></column>
+        <column name="tyyppi" type="String"></column>
+        <column name="kieli_ISO639_3" type="String"></column>
+        <column name="murre" type="String"></column>
+        <column name="havaintoaika" type="String"></column>
+        <column name="kuvaus" type="String"></column>
+        <column name="lisatieto" type="String"></column>
+        <column name="tuotu_kantaan" type="Date"></column>
+        <column name="muutettu" type="Date"></column>
+        <column name="muuttaja" type="String"></column>
+        <column name="poistettu" type="Date"></column>
+        <column name="tunnus" type="String"></column>
+        <column name="ryhma_tunnus" type="String"></column>
+    </entity>
+    <entity name="Lajikoodi" local-service="true" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true" table="lajikoodi">
+        <column name="lajikoodi_id" type="int" primary="true"></column>
+        <column name="lajikoodi" type="int"></column>
+        <column name="laji" type="String"></column>
+        <column name="aineistot" type="String"></column>
+        <column name="viite" type="String"></column>
+        <column name="tuotu_kantaan" type="Date"></column>
+        <column name="muutettu" type="Date"></column>
+        <column name="muuttaja" type="String"></column>
+        <column name="poistettu" type="Date"></column>
+    </entity>
+    <entity local-service="true" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true" table="ryhma" name="Ryhma">
+        <column name="ryhma_id" type="int" primary="true" id-type="increment"></column>
+        <column name="aineisto_id" type="int"></column>
+        <column name="nimi" type="String"></column>
+        <column name="tyyppi" type="String"></column>
+        <column name="ylaryhma" type="int"></column>
+        <column name="selite" type="String"></column>
+        <column name="kartta_kuva_linkki" type="String"></column>
+        <column name="tuotu_kantaan" type="Date"></column>
+        <column name="muutettu" type="Date"></column>
+        <column name="muuttaja" type="String"></column>
+        <column name="poistettu" type="Date"></column>
+        <column name="tmp" type="String"></column>
+        <column name="tunnus" type="String"></column>
+    </entity>
+    <entity name="Levikki" local-service="true" table="levikki" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true">
+        <column name="levikki_id" type="int" primary="true" id-type="increment"></column>
+        <column name="ilmio_id" type="int"></column>
+        <column name="paikka_id" type="int"></column>
+        <column name="paikka_tunniste" type="String"></column>
+        <column name="ilmio_tunnus" type="String"></column>
+        <column name="uusi" type="int"></column>
+    </entity>
+    <entity local-service="true" remote-service="true" data-source="kotus_kielikartastot" session-factory="kotus_kielikartastotSessionFactory" cache-enabled="true" table="paikka" name="Paikka">
+        <column name="paikka_id" type="int" primary="true" id-type="increment"></column>
+        <column name="aineistot" type="String"></column>
+        <column name="tunniste" type="String"></column>
+        <column name="nimi_fin" type="String"></column>
+        <column name="nimi_kieli" type="String"></column>
+        <column name="tyyppi" type="String"></column>
+        <column name="alue" type="String"></column>
+        <column name="maa_ISO3166_1" type="String"></column>
+        <column name="ajankohta" type="String"></column>
+        <column name="selite" type="String"></column>
+        <column name="pistekoordinaatit" type="Collection"></column>
+        <column name="aluekoordinaatit" type="Collection"></column>
+        <column name="kielet" type="String"></column>
+        <column name="murre" type="String"></column>
+        <column name="sapo_linkki" type="String"></column>
+        <column name="mml_paikkaID" type="int"></column>
+        <column name="tuotu_kantaan" type="Date"></column>
+        <column name="muutettu" type="Date"></column>
+        <column name="muuttaja" type="String"></column>
+        <column name="poistettu" type="Date"></column>
+    </entity>
+</service-builder>
