@@ -1,142 +1,171 @@
 <link href="//avaa.tdata.fi/commonjs/ol/3.4.0/css/ol.css" rel="stylesheet" type="text/css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<style type="text/css">.map {
-	height: 800px;
-	margin-bottom: 30px;
-}
+<style type="text/css">
 
-.ol-popup {
-	display: none;
-	position: absolute;
-	background-color: white;
-	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
-	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
-	padding: 15px;
-	border-radius: 10px;
-	border: 1px solid #cccccc;
-	bottom: 12px;
-	left: -50px;
-}
+	.map {
+		height: 900px;
+		margin-bottom: 30px;
+	}
 
-.ol-popup-content {
-	width: 100%;
-	white-space: pre;
-}
+	.well.span4 {
+		width: 330px !important;
+	}
 
-.ol-popup:after, .ol-popup:before {
-	top: 100%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
+	@media (max-width: 2400px) and (min-width: 980px) {
+		.map.span8 {
+			width: calc(95% - 330px) !important;
+		}
+	}
 
-.ol-popup:after {
-	border-top-color: white;
-	border-width: 10px;
-	left: 48px;
-	margin-left: -10px;
-}
+	@media (max-width: 979px) and (min-width: 480px) {
+		.map.span8 {
+			width: 100% !important;
+		}
 
-.ol-popup:before {
-	border-top-color: #cccccc;
-	border-width: 11px;
-	left: 48px;
-	margin-left: -11px;
-}
+		.well.span4 {
+			width: 100% !important;
+		}
+	}
 
-.ol-popup-closer {
-	text-decoration: none;
-	position: absolute;
-	top: 2px;
-	right: 8px;
-}
+	.ol-popup {
+		display: none;
+		position: absolute;
+		background-color: white;
+		-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+		-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+		filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+		padding: 15px;
+		border-radius: 10px;
+		border: 1px solid #cccccc;
+		bottom: 12px;
+		left: -50px;
+	}
 
-.ol-popup-closer:after {
-	content: "x";
-}
+	.ol-popup-content {
+		width: 100%;
+		white-space: pre;
+	}
 
-#legend-container {
-	margin-top: 20px !important;
-	margin-left: 10px !important;
-	display: none;
-	background-color: #EEE;
-}
+	.ol-popup:after, .ol-popup:before {
+		top: 100%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
 
-#legend-container .legend {
-	margin-left: 3px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
+	.ol-popup:after {
+		border-top-color: white;
+		border-width: 10px;
+		left: 48px;
+		margin-left: -10px;
+	}
 
-#ilmio-legend .ilmio-selection-container {
-	margin-top: 20px;
-}
+	.ol-popup:before {
+		border-top-color: #cccccc;
+		border-width: 11px;
+		left: 48px;
+		margin-left: -11px;
+	}
 
-#ilmio-legend .ilmio-selection-container .ilmio-selection-item {
-	width: 60%;
-	display: inline;
-	color: #444;
-}
+	.ol-popup-closer {
+		text-decoration: none;
+		position: absolute;
+		top: 2px;
+		right: 8px;
+	}
 
-#ilmio-legend .ilmio-selection-icon {
-	display: inline;
-	margin-right: 10px;
-}
+	.ol-popup-closer:after {
+		content: "x";
+	}
 
-#raja-legend .raja-item {
-	display: inline-block;
-}
+	#legend-container {
+		margin-top: 20px !important;
+		margin-left: 10px !important;
+		display: none;
+		background-color: #EEE;
+	}
 
-#raja-legend .raja-selection-row-cell {
-	display: inline-block;
-	width: 50%
-}
+	#legend-container .legend {
+		margin-left: 3px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 
-#raja-selection-container {
-	margin-bottom: 5px;
-}
+	#ilmio-legend .ilmio-selection-container {
+		margin-top: 20px;
+	}
 
-#link-to-info {
-	color: #2aaae6 !important;
-	text-decoration: none !important;
-	font-size: 16px !important;
-	font-weight: normal !important;
-}
+	#ilmio-legend .ilmio-selection-container .ilmio-selection-item {
+		width: 60%;
+		display: inline;
+		color: #444;
+	}
 
-.map-legend-label {
-	border-bottom: 1px dotted;
-	font-size: 20px;
-	font-weight: 700;
-	cursor: pointer;
-}
+	#ilmio-legend .ilmio-selection-icon {
+		display: inline;
+		margin-right: 10px;
+	}
 
-#ilmio-legend-notification-container {
-	margin-top: 20px; 
-}
+	#ilmio-legend .ilmio-highlight-checkbox {
+		display: inline;
+		margin-right: 10px;
+	}
 
-.legend-label-icon {
-	vertical-align: text-top;
-}
+	#raja-legend .raja-item {
+		display: inline-block;
+	}
 
-#ilmio-legend-empty-btn {
-	float: right;
-}
+	#raja-legend .raja-selection-row-cell {
+		display: inline-block;
+		width: 50%
+	}
 
-#ilmio-legend-empty-btn:focus {
-	outline: none !important
-}
+	#raja-selection-container {
+		margin-bottom: 5px;
+	}
+
+	#link-to-info {
+		color: #2aaae6 !important;
+		text-decoration: none !important;
+		font-size: 16px !important;
+		font-weight: normal !important;
+	}
+
+	.map-legend-label {
+		border-bottom: 1px dotted;
+		font-size: 20px;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	#ilmio-legend-notification-container {
+		margin-top: 20px;
+	}
+
+	.legend-label-icon {
+		vertical-align: text-top;
+	}
+
+	#ilmio-legend-empty-btn {
+		float: right;
+	}
+
+	#ilmio-legend-empty-btn:focus {
+		outline: none !important
+	}
 
 </style>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"
-	type="text/javascript"></script>
+		type="text/javascript"></script>
 <script src="//avaa.tdata.fi/commonjs/ol/3.4.0/ol.js"
-	type="text/javascript"></script><script src="//avaa.tdata.fi/commonjs/proj4/2.3.3/proj4.js"
-	type="text/javascript"></script><script src="//avaa.tdata.fi/commonjs/epsg.io/3067.js"
-	type="text/javascript"></script>
+		type="text/javascript"></script>
+<script src="//avaa.tdata.fi/commonjs/proj4/2.3.3/proj4.js"
+		type="text/javascript"></script>
+<script src="//avaa.tdata.fi/commonjs/epsg.io/3067.js"
+		type="text/javascript"></script>
 
 <div class="ol-popup" id="popup">
 	<a href="#" class="ol-popup-closer" id="popup-closer"></a>
@@ -152,51 +181,55 @@
 	</div>
 	<div class="row" id="map-row">
 		<div class="well span12">
+			<!--<div class="map span8" id="map">&nbsp;</div>-->
 			<div class="map span8" id="map">&nbsp;</div>
+			<!--<div class="well span4" id="legend-container">-->
 			<div class="well span4" id="legend-container">
-				
-				<div class="map-legend-label-container" title="Alta saat rajat päälle ja pois päältä. Huomaa, pitäjien rajat näkyvät vain lähemmäs tarkentaessa.">
+
+				<div class="map-legend-label-container"
+					 title="Alta saat rajat päälle ja pois päältä. Huomaa, pitäjien rajat näkyvät vain lähemmäs tarkentaessa.">
 					<i class="fa fa-info-circle legend-label-icon"></i>
 					<span class="map-legend-label" id="raja-legend-label">Rajat</span>
 				</div>
 				<div class="legend" id="raja-legend">&nbsp;</div>
-				
-				<div class="map-legend-label-container" title="Pudotusvalikoista voit valita kartalla näytettävät ilmiöt. Pudotusvalikon vieressä oleva symboli vastaa valittua ilmiötä. Ilmiötä klikkaamalla saat ilmiöön liittyvät tiedot esille.">
+
+				<div class="map-legend-label-container"
+					 title="Pudotusvalikoista voit valita kartalla näytettävät ilmiöt. Pudotusvalikon vieressä oleva symboli vastaa valittua ilmiötä. Ilmiötä klikkaamalla saat ilmiöön liittyvät tiedot esille.">
 					<i class="fa fa-info-circle legend-label-icon"></i>
 					<span class="map-legend-label" id="ilmio-legend-label">Ilmiöt</span>
-					<button type="button" class="btn btn-default" id="ilmio-legend-empty-btn" value="0">Tyhjennä kartta</button>
+					<button type="button" class="btn btn-default" id="ilmio-legend-empty-btn" value="0">Tyhjennä
+						kartta
+					</button>
 				</div>
 				<div class="legend" id="ilmio-legend">&nbsp;</div>
-			
+
 			</div>
 		</div>
 	</div>
 </div>
 
-
-
 <script type="text/javascript">
 
 	var hasBeenDrawnOnce = false;
-	
+
 	function displayMapLegend() {
 		$('#legend-container').css('display', 'block');
 	}
-	
+
 	function removeIlmioLegend() {
 		$('#ilmio-legend').empty();
 	}
-	
+
 	function displayMapContainer() {
 		$('#map-container').css('display', 'block');
 	}
-	
+
 	function hideMapContainer() {
 		$('#map-container').css('display', 'none');
 	}
-	
+
 	hideMapContainer();
-	
+
 	var ilmioLayers = [];
 	var ilmioIdSelectioIdMap = {};
 	var allFeaturesAtPixel = [];
@@ -205,95 +238,94 @@
 	var ryhmaApiBaseUrl = "/kotus-kielikartastot-portlet/ryhmaPaikkaGeoJSONAPI.jsp?ryhma_id=";
 	var geoServerBaseUrl = "//avaa.tdata.fi/geoserver/gwc/service/wms";
 	var mapIconBaseUrl = "//avaa.tdata.fi/commonjs/images/marker/";
-	var mapIconNames = [ "vaaleanoranssi4.png", "punainen6.png", "violetti7.png",
-	       			"kvioletti8.png", "kvioletti9.png", "sininen0.png",
-	       			"tummansininen3.png", "kvihrea2.png", "tummanvihrea1.png",
-	       			"oranssi5.png" ];
+	var mapIconNames = ["vaaleanoranssi4.png", "punainen6.png", "violetti7.png",
+		"kvioletti8.png", "kvioletti9.png", "sininen0.png",
+		"tummansininen3.png", "kvihrea2.png", "tummanvihrea1.png",
+		"oranssi5.png"];
 
 	var amountOfMapIcons = mapIconNames.length;
 	var amountOfIlmioLayers = 0;
-	var amountOfNonIlmioLayers = 0; 
-	
-	
+	var amountOfNonIlmioLayers = 0;
+
 	// Raja stuff
-	
+
 	var murreLayer = new ol.layer.Tile({
-		source : new ol.source.TileWMS({
-			url : geoServerBaseUrl,
-			params : {
-				'LAYERS' : 'kotus:rajat-sms-alueet',
-				'SRS' : 'EPSG:3857',
-				'VERSION' : '1.1.0'
+		source: new ol.source.TileWMS({
+			url: geoServerBaseUrl,
+			params: {
+				'LAYERS': 'kotus:rajat-sms-alueet',
+				'SRS': 'EPSG:3857',
+				'VERSION': '1.1.0'
 			}
 		}),
-		visible : false
+		visible: false
 	});
-	
+
 	var murreOsaLayer = new ol.layer.Tile({
-		source : new ol.source.TileWMS({
-			url : geoServerBaseUrl,
-			params : {
-				'LAYERS' : 'kotus:rajat-sms-alueosat',
-				'SRS' : 'EPSG:3857',
-				'VERSION' : '1.1.0'
+		source: new ol.source.TileWMS({
+			url: geoServerBaseUrl,
+			params: {
+				'LAYERS': 'kotus:rajat-sms-alueosat',
+				'SRS': 'EPSG:3857',
+				'VERSION': '1.1.0'
 			}
 		}),
-		visible : false
+		visible: false
 	});
-	
+
 	var lansiItaLayer = new ol.layer.Tile({
-		source : new ol.source.TileWMS({
-			url : geoServerBaseUrl,
-			params : {
-				'LAYERS' : 'kotus:rajat-lansi-ita',
-				'SRS' : 'EPSG:3857',
-				'VERSION' : '1.1.0'
+		source: new ol.source.TileWMS({
+			url: geoServerBaseUrl,
+			params: {
+				'LAYERS': 'kotus:rajat-lansi-ita',
+				'SRS': 'EPSG:3857',
+				'VERSION': '1.1.0'
 			}
 		}),
-		visible : false
+		visible: false
 	});
-	
+
 	var pitajaLayer = new ol.layer.Tile({
-		source : new ol.source.TileWMS({
-			url : geoServerBaseUrl,
-			params : {
-				'LAYERS' : 'kotus:pitajat',
-				'SRS' : 'EPSG:3857',
-				'VERSION' : '1.1.0'
+		source: new ol.source.TileWMS({
+			url: geoServerBaseUrl,
+			params: {
+				'LAYERS': 'kotus:pitajat',
+				'SRS': 'EPSG:3857',
+				'VERSION': '1.1.0'
 			}
 		}),
-		visible : false
+		visible: false
 	});
 
 	function addRajaCheckboxes(rootElem) {
 		var containerElem = $('<div>', {
-			id : 'raja-selection-container'
+			id: 'raja-selection-container'
 		});
 		containerElem.appendTo(rootElem);
 		var rajaRow1Elem = $('<div>', {
-			id : 'raja-selection-row1'
+			id: 'raja-selection-row1'
 		});
 		rajaRow1Elem.appendTo(containerElem);
 		var rajaRow2Elem = $('<div>', {
-			id : 'raja-selection-row2'
+			id: 'raja-selection-row2'
 		});
 		rajaRow2Elem.appendTo(containerElem);
 
 		var rajaRow1Cell1Elem = $('<div>', {
-			id : 'raja-selection-row1-cell1',
-			class : 'raja-selection-row-cell'
+			id: 'raja-selection-row1-cell1',
+			class: 'raja-selection-row-cell'
 		});
 		var rajaRow1Cell2Elem = $('<div>', {
-			id : 'raja-selection-row1-cell2',
-			class : 'raja-selection-row-cell'
+			id: 'raja-selection-row1-cell2',
+			class: 'raja-selection-row-cell'
 		});
 		var rajaRow2Cell1Elem = $('<div>', {
-			id : 'raja-selection-row2-cell1',
-			class : 'raja-selection-row-cell'
+			id: 'raja-selection-row2-cell1',
+			class: 'raja-selection-row-cell'
 		});
 		var rajaRow2Cell2Elem = $('<div>', {
-			id : 'raja-selection-row2-cell2',
-			class : 'raja-selection-row-cell'
+			id: 'raja-selection-row2-cell2',
+			class: 'raja-selection-row-cell'
 		});
 		rajaRow1Cell1Elem.appendTo(rajaRow1Elem);
 		rajaRow1Cell2Elem.appendTo(rajaRow1Elem);
@@ -301,63 +333,63 @@
 		rajaRow2Cell2Elem.appendTo(rajaRow2Elem);
 
 		var rajaRow1Item1 = $('<div>', {
-			class : 'checkbox raja-item'
+			class: 'checkbox raja-item'
 		});
 		var rajaRow1Item1Label = $('<label>', {
-			text : 'Pitäjät',
+			text: 'Pitäjät',
 			id: 'label-pitaja'
 		});
 		var rajaRow1Item1Input = $('<input>', {
-			type : 'checkbox',
-			id : 'input-pitaja'
+			type: 'checkbox',
+			id: 'input-pitaja'
 		});
 		rajaRow1Item1Input.prependTo(rajaRow1Item1Label);
 		rajaRow1Item1Label.appendTo(rajaRow1Item1);
 		rajaRow1Item1.appendTo(rajaRow1Cell1Elem);
 
 		var rajaRow1Item2 = $('<div>', {
-			class : 'checkbox raja-item'
+			class: 'checkbox raja-item'
 		});
 		var rajaRow1Item2Label = $('<label>', {
-			text : 'SMS murrealueet'
+			text: 'SMS murrealueet'
 		});
 		var rajaRow1Item2Input = $('<input>', {
-			type : 'checkbox',
-			id : 'input-murre'
+			type: 'checkbox',
+			id: 'input-murre'
 		});
 		rajaRow1Item2Input.prependTo(rajaRow1Item2Label);
 		rajaRow1Item2Label.appendTo(rajaRow1Item2);
 		rajaRow1Item2.appendTo(rajaRow1Cell2Elem);
 
 		var rajaRow2Item1 = $('<div>', {
-			class : 'checkbox raja-item'
+			class: 'checkbox raja-item'
 		});
 		var rajaRow2Item1Label = $('<label>', {
-			text : 'Länsi-Itä'
+			text: 'Länsi-Itä'
 		});
 		var rajaRow2Item1Input = $('<input>', {
-			type : 'checkbox',
-			id : 'input-lansiita'
+			type: 'checkbox',
+			id: 'input-lansiita'
 		});
 		rajaRow2Item1Input.prependTo(rajaRow2Item1Label);
 		rajaRow2Item1Label.appendTo(rajaRow2Item1);
 		rajaRow2Item1.appendTo(rajaRow2Cell1Elem);
 
 		var rajaRow2Item2 = $('<div>', {
-			class : 'checkbox raja-item'
+			class: 'checkbox raja-item'
 		});
 		var rajaRow2Item2Label = $('<label>', {
-			text : 'SMS murrealueosat'
+			text: 'SMS murrealueosat'
 		});
 		var rajaRow2Item2Input = $('<input>', {
-			type : 'checkbox',
-			id : 'input-murreosa'
+			type: 'checkbox',
+			id: 'input-murreosa'
 		});
 		rajaRow2Item2Input.prependTo(rajaRow2Item2Label);
 		rajaRow2Item2Label.appendTo(rajaRow2Item2);
 		rajaRow2Item2.appendTo(rajaRow2Cell2Elem);
 	}
-	
+
 	function addRajaLegendsAndLayers() {
 		$('#raja-legend').empty();
 		addRajaCheckboxes($('#raja-legend'));
@@ -371,9 +403,9 @@
 		map.addLayer(lansiItaLayer);
 		$('#input-lansiita').prop('checked', false);
 	}
-	
+
 	// Map icon stuff
-	
+
 	function getMapIconUrls() {
 		var urls = [];
 		var colorNbr = 0;
@@ -382,70 +414,71 @@
 		}
 		return urls;
 	}
-	
-	function createLayerIconStyle(srcUrl) {
-		var layerStyle = new ol.style.Style({
-			image : new ol.style.Icon(/** @type {olx.style.IconOptions} */
-			({
-				anchor : [ 0.5, 6 ],
-				anchorXUnits : 'fraction',
-				anchorYUnits : 'pixels',
-				opacity : 1.00,
-				src : srcUrl
-			}))
 
+	function createLayerIconStyle(srcUrl) {
+
+		var img = new ol.style.Icon(/** @type {olx.style.IconOptions} */
+				({
+					opacity: 1.00,
+					src: srcUrl
+				}))
+
+		var layerStyle = new ol.style.Style({
+			image: img,
+			zIndex: 1
 		});
 		return layerStyle;
 	}
 
-	
+
 	// Ilmio layer stuff
-	
+
 	function removeAllIlmioLayers() {
 		if (ilmioLayers !== null && ilmioLayers.length > 0) {
-			$.each(ilmioLayers, function(i, item) {
+			$.each(ilmioLayers, function (i, item) {
 				map.removeLayer(item);
 			});
 			ilmioLayers = [];
 		}
 	}
-	
+
 	function emptyMapIlmioLayers() {
 		var num = map.getLayers().getArray().length;
-		for(var i = num - 1; i >= amountOfNonIlmioLayers; i--) {
+		for (var i = num - 1; i >= amountOfNonIlmioLayers; i--) {
 			map.getLayers().removeAt(i);
-		} 
-		
-		$('.ilmio-selection-item option[data-value="0"]').each(function() {
+		}
+
+		$('.ilmio-selection-item option[data-value="0"]').each(function () {
 			$(this).prop('selected', true);
 		});
-		
-		for(var selectionId in ilmioIdSelectioIdMap) {
-			ilmioIdSelectioIdMap[selectionId] = "0";	
+
+		for (var selectionId in ilmioIdSelectioIdMap) {
+			ilmioIdSelectioIdMap[selectionId] = "0";
 		}
 		return false;
 	}
 
 	function getIlmioLayerFromGeoJson(ilmioPaikkaTietoJSON) {
-		if(ilmioPaikkaTietoJSON.features.length > 0) {
+		if (ilmioPaikkaTietoJSON.features.length > 0) {
 			var layerId = ilmioPaikkaTietoJSON.features[0].properties.ilmioId;
 			var layerName = ilmioPaikkaTietoJSON.features[0].properties.ilmioTyyppi + ": " + ilmioPaikkaTietoJSON.features[0].properties.ilmioNimi;
-			
+
 			var kotusIlmioSource = new ol.source.GeoJSON({
-				projection : "EPSG:3857",
-				object : ilmioPaikkaTietoJSON
+				projection: "EPSG:3857",
+				object: ilmioPaikkaTietoJSON
 			});
 			var vectorLayer = new ol.layer.Vector({
-				source : kotusIlmioSource,
+				source: kotusIlmioSource,
 				visible: true
 			});
 			vectorLayer.set('ilmioId', layerId);
 			vectorLayer.set('ilmioLabel', layerName);
 			vectorLayer.setStyle(null);
-			return vectorLayer;	
+			return vectorLayer;
 		}
 		return null;
 	}
+
 
 	// Actions to take when tree ilmiö or ryhmä is clicked
 	function updateMapFromIlmioTree(srcUrl) {
@@ -453,30 +486,30 @@
 		removeAllIlmioLayers();
 		removeIlmioLegend();
 		amountOfNonIlmioLayers = map.getLayers().getArray().length;
-		
-		$.get(srcUrl, function(data, status) {
+
+		$.get(srcUrl, function (data, status) {
 			var unsortedIlmioLayers = [];
 			if ($.isArray(data)) {
-				$.each(data, function(i, item) {
+				$.each(data, function (i, item) {
 					var ilmioLayer = getIlmioLayerFromGeoJson(item);
-					if(ilmioLayer !== null) {
+					if (ilmioLayer !== null) {
 						unsortedIlmioLayers.push(ilmioLayer);
 					}
 				});
 			} else {
 				var ilmioLayer = getIlmioLayerFromGeoJson(data);
-				if(ilmioLayer !== null) {
+				if (ilmioLayer !== null) {
 					unsortedIlmioLayers.push(ilmioLayer);
 				}
 			}
-			
-			if(unsortedIlmioLayers.length > 0) {
+
+			if (unsortedIlmioLayers.length > 0) {
 				ilmioLayers = sortIlmioLayers(unsortedIlmioLayers);
 				amountOfIlmioLayers = ilmioLayers.length;
 				updateIlmioLegend(ilmioLayers);
 				displayMapContainer();
 				map.setTarget('map');
-				displayMapLegend();				
+				displayMapLegend();
 			} else {
 				hideMapContainer();
 			}
@@ -487,16 +520,16 @@
 
 	function sortIlmioLayers(unsortedLayers) {
 		var ilmioLabels = [];
-		$.each(unsortedLayers, function(i, ilmioLayer) {
+		$.each(unsortedLayers, function (i, ilmioLayer) {
 			ilmioLabels.push(ilmioLayer.get('ilmioLabel'));
 		});
-		
+
 		var sortedIlmioLabels = ilmioLabels.sort();
 		var sortedIlmioLayers = [];
-		for(var i=0; i < sortedIlmioLabels.length; i++) {
+		for (var i = 0; i < sortedIlmioLabels.length; i++) {
 			var sortedLabel = sortedIlmioLabels[i];
-			$.each(unsortedLayers, function(i, ilmioLayer) {
-				if(ilmioLayer.get('ilmioLabel') == sortedLabel) {
+			$.each(unsortedLayers, function (i, ilmioLayer) {
+				if (ilmioLayer.get('ilmioLabel') == sortedLabel) {
 					sortedIlmioLayers.push(ilmioLayer);
 					return false;
 				}
@@ -504,29 +537,35 @@
 		}
 		return sortedIlmioLayers;
 	}
-	
+
 	function addIlmioSelectionDropdowns(sortedIlmioLayers, mapIconUrls, rootElem, maxDropdownAmt) {
 		for (var i = 0; i < Math.min(amountOfIlmioLayers, maxDropdownAmt); i++) {
 			var selectionItemId = 'ilmio-selection-item-' + i;
 			var containerElem = $('<div>', {
-				class : 'ilmio-selection-container',
-				id : 'ilmio-selection-container-' + i
+				class: 'ilmio-selection-container',
+				id: 'ilmio-selection-container-' + i
 			});
 			containerElem.appendTo(rootElem);
+			var checkBoxElem = $('<input>', {
+				class: 'ilmio-highlight-checkbox',
+				type: 'checkbox',
+				id: 'ilmio-highlight-checkbox-' + i
+			});
+			checkBoxElem.appendTo(containerElem);
 			$('<img>', {
-				class : 'ilmio-selection-icon',
-				src : mapIconUrls[i]
+				class: 'ilmio-selection-icon',
+				src: mapIconUrls[i]
 			}).appendTo(containerElem);
 			var selectElem = $('<select>', {
-				class : 'form-control ilmio-selection-item',
-				id : selectionItemId
+				class: 'form-control ilmio-selection-item',
+				id: selectionItemId
 			});
 			selectElem.appendTo(containerElem);
 
 			// Add empty value
 			var optionElem = $('<option>', {
-				id : selectionItemId + '-empty',
-				'data-value' : 0
+				id: selectionItemId + '-empty',
+				'data-value': 0
 			});
 			optionElem.appendTo(selectElem);
 			optionElem.text('');
@@ -534,8 +573,8 @@
 			for (var j = 0; j < sortedIlmioLayers.length; j++) {
 				var ilmioLayer = sortedIlmioLayers[j];
 				optionElem = $('<option>', {
-					id : selectionItemId + j,
-					'data-value' : ilmioLayer.get('ilmioId')
+					id: selectionItemId + j,
+					'data-value': ilmioLayer.get('ilmioId')
 				});
 				optionElem.appendTo(selectElem);
 				optionElem.text(ilmioLayer.get('ilmioLabel'));
@@ -546,58 +585,76 @@
 
 			resetLayerToMap(selectionItemId, mapIconUrls, true);
 
-			$('#' + selectionItemId).change(function() {
+			$('#' + selectionItemId).change(function () {
 				var id = $(this).attr('id');
 				resetLayerToMap(id, mapIconUrls, false);
 			});
 		}
-		
+
 		var notificationContainerElem = $('<div>', {
-			id : 'ilmio-legend-notification-container'
+			id: 'ilmio-legend-notification-container'
 		});
-		
+
 		var clickMapItemsNotificationElem = $('<p>', {
-			id : 'ilmio-legend-notification-click-map-item'
+			id: 'ilmio-legend-notification-click-map-item'
 		});
 		clickMapItemsNotificationElem.text('Klikkaamalla ilmiötä kartalla saat ilmiöön liittyvät tiedot esille.');
 		clickMapItemsNotificationElem.appendTo(notificationContainerElem);
-		
-		if(amountOfIlmioLayers > maxDropdownAmt) {
+
+		if (amountOfIlmioLayers > maxDropdownAmt) {
 			var tooManyItemsNotificationElem = $('<p>', {
-				id : 'ilmio-legend-notification-too-many-items'
+				id: 'ilmio-legend-notification-too-many-items'
 			});
 			tooManyItemsNotificationElem.text('Valitussa ryhmässä on enemmän ilmiöitä kuin kartalla voidaan kerralla näyttää. Ylläolevista pudotusvalikoista voit valita minkä tahansa ilmiön.');
 			tooManyItemsNotificationElem.appendTo(notificationContainerElem);
 		}
 		notificationContainerElem.appendTo(rootElem);
 	}
-	
+
 	function findMapLayerByIlmioId(ilmioId) {
 		var layerIdx = -1;
 		$.each(map.getLayers().getArray(), function (k, layer) {
 			var thisIlmioId = layer.get("ilmioId");
-		  	if(thisIlmioId == ilmioId){
-		  		layerIdx = k;
-		    	return false;
-		  	}
+			if (thisIlmioId == ilmioId) {
+				layerIdx = k;
+				return false;
+			}
 		});
 		return layerIdx;
 	}
-	
+
 	function findMapLayerBySelectionItemId(selectionItemId) {
 		var layerIdx = -1;
 		$.each(map.getLayers().getArray(), function (k, layer) {
 			var thisSelectionItemId = layer.get("selectionItemId");
-		  	if(thisSelectionItemId == selectionItemId){
-		  		layerIdx = k;
-		    	return false;
-		  	}
+			if (thisSelectionItemId == selectionItemId) {
+				layerIdx = k;
+				return false;
+			}
 		});
 		return layerIdx;
-	} 
-	
+	}
+
+	function findCurrentMapLayerByAttachedSrcUrl(srcUrl) {
+		var layerIdx = -1;
+
+		$.each(ilmioLayers, function (k, layer) {
+			var style = layer.getStyle();
+			if (Array.isArray(style)) {
+				var thisSelectionItemId = style[0].getImage().getSrc();
+			} else {
+				var thisSelectionItemId = style.getImage().getSrc();
+			}
+			if (thisSelectionItemId == srcUrl) {
+				layerIdx = k;
+				return false;
+			}
+		});
+		return layerIdx;
+	}
+
 	function resetIlmioLayerByIlmioId(ilmioId) {
-		$.each(ilmioLayers, function(i, ilmioLayer) {
+		$.each(ilmioLayers, function (i, ilmioLayer) {
 			if (ilmioLayer.get('ilmioId') == ilmioId) {
 				ilmioLayer.setStyle(null);
 				ilmioLayer.set('mapIconUrl', '');
@@ -606,39 +663,41 @@
 			}
 		});
 	}
-	
+
 	function getEmptySelectionAmt(untilIdx) {
 		var emptyAmt = 0;
-		for(var i=0; i < untilIdx; i++) {
-			if(ilmioIdSelectioIdMap[i.toString()] == "0") {
+		for (var i = 0; i < untilIdx; i++) {
+			if (ilmioIdSelectioIdMap[i.toString()] == "0") {
 				emptyAmt++;
 			}
 		}
 		return emptyAmt;
 	}
 
+
 	function resetLayerToMap(selectionItemId, mapIconUrls, isInit) {
+
 		var selectedIdx = selectionItemId.substring(selectionItemId.length - 1);
 		var selectedMapIconUrl = mapIconUrls[selectedIdx];
 		var selectedIlmioId = $('#' + $('#' + selectionItemId).find(':selected')[0].id).data('value');
 		var previouslySelectedIlmioId = ilmioIdSelectioIdMap[selectedIdx];
-		
-		if(!isInit && previouslySelectedIlmioId > 0) {
+
+		if (!isInit && previouslySelectedIlmioId > 0) {
 			map.getLayers().removeAt(findMapLayerBySelectionItemId(selectionItemId));
 			resetIlmioLayerByIlmioId(previouslySelectedIlmioId);
 		}
-		
+
 		ilmioIdSelectioIdMap[selectedIdx] = selectedIlmioId;
-		
+
 		if (selectedIlmioId > 0) {
-			if(!isInit) {
+			if (!isInit) {
 				var idx = -1;
-				while((idx = findMapLayerByIlmioId(selectedIlmioId)) != -1) {
+				while ((idx = findMapLayerByIlmioId(selectedIlmioId)) != -1) {
 					map.getLayers().removeAt(idx);
-					
-					$('.ilmio-selection-item option[data-value="'+ selectedIlmioId + '"]:selected').each(function() {
+
+					$('.ilmio-selection-item option[data-value="' + selectedIlmioId + '"]:selected').each(function () {
 						var parentSelectionId = this.parentNode.id;
-						if(parentSelectionId != selectionItemId) {
+						if (parentSelectionId != selectionItemId) {
 							$('#' + parentSelectionId + ' option:eq(0)').prop('selected', true);
 							var parentSelectetioIdx = parentSelectionId.substring(selectionItemId.length - 1);
 							ilmioIdSelectioIdMap[parentSelectetioIdx] = "0";
@@ -646,8 +705,8 @@
 					});
 				}
 			}
-			
-			$.each(ilmioLayers, function(i, ilmioLayer) {
+
+			$.each(ilmioLayers, function (i, ilmioLayer) {
 				if (ilmioLayer.get('ilmioId') == selectedIlmioId) {
 					ilmioLayer.setStyle(createLayerIconStyle(selectedMapIconUrl));
 					ilmioLayer.set('mapIconUrl', selectedMapIconUrl);
@@ -661,17 +720,17 @@
 
 	function updateIlmioLegend(sortedIlmioLayers) {
 		var mapIconUrls = getMapIconUrls();
-		addIlmioSelectionDropdowns(sortedIlmioLayers, mapIconUrls, $('#ilmio-legend'),	amountOfMapIcons);
+		addIlmioSelectionDropdowns(sortedIlmioLayers, mapIconUrls, $('#ilmio-legend'), amountOfMapIcons);
 	}
 
 	function mapIconClicked(evt) {
 		allFeaturesAtPixel = [];
-		map.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+		map.forEachFeatureAtPixel(evt.pixel, function (feature, layer) {
 			allFeaturesAtPixel.push(feature);
 		});
 		if (allFeaturesAtPixel.length > 0) {
 			var popupText = allFeaturesAtPixel[0].get('paikkaNimi') + " (" + allFeaturesAtPixel[0].get('paikkaTyyppi') + "), " + allFeaturesAtPixel[0].get('ilmioTyyppi') + ": " + allFeaturesAtPixel[0].get('ilmioNimi');
-			$.each(allFeaturesAtPixel, function(i, item) {
+			$.each(allFeaturesAtPixel, function (i, item) {
 				if (i > 0) {
 					popupText += ",\n" + allFeaturesAtPixel[i].get('paikkaNimi') + " (" + allFeaturesAtPixel[i].get('paikkaTyyppi') + "), " + allFeaturesAtPixel[i].get('ilmioTyyppi') + ": " + allFeaturesAtPixel[i].get('ilmioNimi');
 				}
@@ -700,87 +759,145 @@
 		}
 		if (toggleLayer !== null) {
 			toggleLayer.setVisible(isNowChecked);
-			if(targetId == 'input-murreosa' && isNowChecked) {
+			if (targetId == 'input-murreosa' && isNowChecked) {
 				murreLayer.setVisible(isNowChecked);
 				$('#input-murre').prop('checked', isNowChecked);
 			}
 		}
 	}
-	
+
+	function highlightCheckboxClicked(evt) {
+		var selectedCheckboxParendId = '#' + evt.target.parentNode.id;
+		var selectedCheckboxImageSrc = $(selectedCheckboxParendId).find('.ilmio-selection-icon').attr('src');
+		var isNowChecked = evt.target.checked;
+		if (isNowChecked) {
+			setIlmioHighlightedStyle(findCurrentMapLayerByAttachedSrcUrl(selectedCheckboxImageSrc));
+		} else {
+			resetIlmioHighlightedStyle(findCurrentMapLayerByAttachedSrcUrl(selectedCheckboxImageSrc));
+		}
+	}
+
+	function createHighlightStyle() {
+		var stroke = new ol.style.Stroke({
+			color: '#000000',
+			width: 4
+		});
+		var styles = [
+			new ol.style.Style({
+				image: new ol.style.Circle({
+					stroke: stroke,
+					radius: 12,
+					stroke: stroke,
+				}),
+				stroke: stroke,
+				zIndex: 2
+			})
+		];
+		return styles;
+	}
+
+	function setIlmioHighlightedStyle(layerId) {
+		var layer = ilmioLayers[layerId];
+		var initialStyle = layer.getStyle();
+		var updatedStyle = [];
+
+		if (!Array.isArray(initialStyle)) {
+			updatedStyle.push(initialStyle);
+			updatedStyle.push(createHighlightStyle()[0]);
+		} else {
+			$.each(initialStyle, function (i, item) {
+				updatedStyle.push(initialStyle[i]);
+			});
+			updatedStyle.push(createHighlightStyle()[0]);
+		}
+		layer.setStyle(updatedStyle);
+	}
+
+	function resetIlmioHighlightedStyle(layerId) {
+		var layer = ilmioLayers[layerId];
+		var updatedStyle = layer.getStyle();
+		var updatedStyleLength = updatedStyle.length;
+		layer.setStyle(updatedStyle.slice(0, (updatedStyleLength - 1)));
+	}
+
 	// Popup overlay class for the map
 	function MapPopupOverlay(popupContainerId, popupContentId, popupCloserId) {
 		var container = $('#' + popupContainerId);
 		var content = $('#' + popupContentId);
 		var closer = $('#' + popupCloserId);
 
-		closer.on('click', function() {
+		closer.on('click', function () {
 			container.attr("style", "display:none;");
 			closer.blur();
 			return false;
 		});
 
 		var overlay = new ol.Overlay({
-			element : container
+			element: container
 		});
 
-		this.getContent = function() {
+		this.getContent = function () {
 			return content;
 		};
 
-		this.getContainer = function() {
+		this.getContainer = function () {
 			return container;
 		};
 
-		this.getCloser = function() {
+		this.getCloser = function () {
 			return closer;
 		};
 
-		this.getOverlay = function() {
+		this.getOverlay = function () {
 			return overlay;
 		};
 	}
-	
+
 	var popup = new MapPopupOverlay('popup', 'popup-content', 'popup-closer');
 	var map = new ol.Map({
-		layers : [ new ol.layer.Tile({
-			source : new ol.source.MapQuest({
-				layer : 'osm'
+		layers: [new ol.layer.Tile({
+			source: new ol.source.MapQuest({
+				layer: 'osm'
 			}),
-			opacity : 0.7
-		}) ],
-		overlays : [ popup.getOverlay() ],
-		controls : ol.control.defaults({
-			attributionOptions : /** @type {olx.control.AttributionOptions} */
-			({
-				collapsible : false
-			})
+			opacity: 0.7
+		})],
+		overlays: [popup.getOverlay()],
+		controls: ol.control.defaults({
+			attributionOptions: /** @type {olx.control.AttributionOptions} */
+					({
+						collapsible: false
+					})
 		}),
-		view : new ol.View({
-			center : ol.proj.transform([ 500000, 7200000 ], 'EPSG:3067',
+		view: new ol.View({
+			center: ol.proj.transform([500000, 7200000], 'EPSG:3067',
 					'EPSG:3857'),
-			zoom : 5
+			zoom: 5
 		})
 	});
-	
+
 	addRajaLegendsAndLayers();
 
-	$('#link-to-info').on('click', function(evt) {
-        $('html, body').animate({ scrollTop: 0 }, 500);
-        return false;
+	$('#link-to-info').on('click', function (evt) {
+		$('html, body').animate({scrollTop: 0}, 500);
+		return false;
 	});
-	
+
 	map.on('singleclick', mapIconClicked);
 
 	$(document).on('click',
 			'#input-murre, #input-murreosa, #input-pitaja, #input-lansiita',
 			rajaCheckboxClicked);
-	
+
+	$(document).on('click',
+			'.ilmio-highlight-checkbox',
+			highlightCheckboxClicked);
+
 	$('#ilmio-legend-empty-btn').on('click', emptyMapIlmioLayers);
 
 	Liferay
 			.on(
 					'updateMapIlmio',
-					function(event, param) {
+					function (event, param) {
 						hasBeenDrawnOnce = true;
 						var url = ilmioApiBaseUrl + param;
 						updateMapFromIlmioTree(url);
@@ -788,26 +905,26 @@
 	Liferay
 			.on(
 					'updateMapRyhma',
-					function(event, param) {
+					function (event, param) {
 						hasBeenDrawnOnce = true;
 						var url = ryhmaApiBaseUrl + param;
 						updateMapFromIlmioTree(url);
 					});
-	
+
 	Liferay
-	.on(
-			'hideMap',
-			function(event, param) {
-				hideMapContainer();
-			});
-	
+			.on(
+					'hideMap',
+					function (event, param) {
+						hideMapContainer();
+					});
+
 	Liferay
-	.on(
-			'showMap',
-			function(event, param) {
-				if(hasBeenDrawnOnce) {
-					displayMapContainer();	
-				}
-			});
+			.on(
+					'showMap',
+					function (event, param) {
+						if (hasBeenDrawnOnce) {
+							displayMapContainer();
+						}
+					});
 
 </script>
