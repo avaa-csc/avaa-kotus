@@ -3,27 +3,50 @@
 <style type="text/css">
 
 	.map {
-		height: 900px;
+		height: 800px;
 		margin-bottom: 30px;
 	}
 
-	.well.span4 {
-		width: 330px !important;
+	.well.span12 {
+		float: left !important;
 	}
-
-	@media (max-width: 2400px) and (min-width: 980px) {
+	
+	@media (max-width: 2400px) and (min-width: 890px) {
+		
 		.map.span8 {
-			width: calc(95% - 330px) !important;
-		}
-	}
-
-	@media (max-width: 979px) and (min-width: 480px) {
-		.map.span8 {
-			width: 100% !important;
+			width: calc(99% - 360px) !important;
 		}
 
 		.well.span4 {
+			width: 360px !important;
+		}
+		
+		.form-control.ilmio-selection-item {
+			font-size: 14px !important;
+		}
+
+		#ilmio-legend-empty-btn {
+			padding-bottom: 4px !important;
+			padding-left: 12px !important;
+			padding-right:12px !important;
+			padding-top:4px !important;
+			font-size: 14px !important;
+		}
+	}
+
+	@media (max-width: 889px) and (min-width: 0px) {
+		.map.span8 {
 			width: 100% !important;
+		}
+		
+		#ilmio-legend-empty-btn {
+			margin-top: 10px !important;
+			margin-bottom: 10px !important;
+			width: 100% !important;
+		}
+
+		#ilmio-legend .ilmio-selection-container .ilmio-selection-item {
+			width: calc(100% - 54px) !important;
 		}
 	}
 
@@ -83,9 +106,10 @@
 
 	#legend-container {
 		margin-top: 20px !important;
-		margin-left: 10px !important;
+		margin-left: 5px !important;
 		display: none;
 		background-color: #EEE;
+		float: right;
 	}
 
 	#legend-container .legend {
@@ -95,11 +119,12 @@
 	}
 
 	#ilmio-legend .ilmio-selection-container {
-		margin-top: 20px;
+		margin-top: 5px;
+		margin-bottom: 5px;
 	}
 
 	#ilmio-legend .ilmio-selection-container .ilmio-selection-item {
-		width: 60%;
+		width: calc(100% - 54px) !important;;
 		display: inline;
 		color: #444;
 	}
@@ -111,7 +136,7 @@
 
 	#ilmio-legend .ilmio-highlight-checkbox {
 		display: inline;
-		margin-right: 10px;
+		margin-right: 15px;
 	}
 
 	#raja-legend .raja-item {
@@ -608,6 +633,13 @@
 			tooManyItemsNotificationElem.text('Valitussa ryhmässä on enemmän ilmiöitä kuin kartalla voidaan kerralla näyttää. Ylläolevista pudotusvalikoista voit valita minkä tahansa ilmiön.');
 			tooManyItemsNotificationElem.appendTo(notificationContainerElem);
 		}
+
+		var highlightIlmiosNotificationElem = $('<p>', {
+			id: 'ilmio-legend-notification-highlight-ilmios'
+		});
+		highlightIlmiosNotificationElem.text('Voit korostaa halutun ilmiön esiintymät lisäämällä valintamerkin symbolin eteen.');
+		highlightIlmiosNotificationElem.appendTo(notificationContainerElem);
+
 		notificationContainerElem.appendTo(rootElem);
 	}
 
@@ -779,7 +811,7 @@
 
 	function createHighlightStyle() {
 		var stroke = new ol.style.Stroke({
-			color: '#000000',
+			color: '#CD8081',
 			width: 4
 		});
 		var styles = [
@@ -856,8 +888,17 @@
 	var popup = new MapPopupOverlay('popup', 'popup-content', 'popup-closer');
 	var map = new ol.Map({
 		layers: [new ol.layer.Tile({
-			source: new ol.source.MapQuest({
-				layer: 'osm'
+			source : new ol.source.TileWMS({
+				url: "http://ows.terrestris.de/osm/service?",
+				attributions: [
+					new ol.Attribution({
+						html: '© <a target="_blank" href="http://ows.terrestris.de/dienste.html">terrestris</a>. Data: © <a target="_blank" href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+					})
+				],
+				params: {
+					'LAYERS': "OSM-WMS",
+					'VERSION': '1.1.0'
+				}
 			}),
 			opacity: 0.7
 		})],
